@@ -12,7 +12,7 @@ age: 23,
 email: 'johnny@gmail.com',
 phone: '0238849459',
 location: 'jump around',
-img: 'www.getimage.com',
+img: 'www.getimage.com.WebP',
 
 }
 
@@ -20,7 +20,7 @@ function ProfilePage() {
   // Query need to be hook up to api
   const {data, isPending, isError} = useQuery({
     queryKey: ['user'],
-    queryFn: () => fetchUserById(id),
+    // queryFn: () => fetchUserById(id),
     
   })
   if(isPending) return <p>Loading...</p>
@@ -28,7 +28,7 @@ function ProfilePage() {
   console.log(user)
   // useing all user data
   return (
- <div>
+     <div>
  <p>{user.img}</p>
  <p>{user.name}</p>
  <p>{user.email}</p>
@@ -36,7 +36,6 @@ function ProfilePage() {
  <p>{user.location}</p>
  </div>
 
- 
   )
 
 }
