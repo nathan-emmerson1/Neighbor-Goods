@@ -1,4 +1,5 @@
 export interface JobData {
+  tag_id: number
   name: string
   description: string
   compensation: string
