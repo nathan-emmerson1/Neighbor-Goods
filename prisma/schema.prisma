@@ -20,6 +20,8 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  user_details_id Int @unique
+  user_details UserDetails @relation(fields: [user_details_id], references: [id])
 }
  
 model Account {
@@ -42,6 +44,17 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@unique([provider, providerAccountId])
+}
+
+model UserDetails {
+  id Int @id @default(autoincrement())
+  user_id String @unique
+  age Int
+  phone String
+  location String
+  Bids Bids[]
+  Tags UserTags[]
+  user User?
 }
  
 model Session {
@@ -77,4 +90,43 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@id([userId, credentialID])
+}
+
+model Jobs {
+  id Int @id @default(autoincrement())
+  name String
+  description String
+  Compensation String
+  restricted Boolean
+  location String
+  address String
+  is_auction Boolean
+  start_date DateTime
+  end_date DateTime
+  Bids Bids[]
+}
+
+model Bids {
+  id Int @id @default(autoincrement())
+  message String
+  compensation String
+  user_id Int
+  user UserDetails @relation(fields: [user_id], references: [id])
+  job_id Int
+  job Jobs @relation(fields: [job_id], references: [id])
+  date_posted DateTime @default(now())
+}
+
+model Tags {
+  id Int @id @default(autoincrement())
+  name String
+  user_tags UserTags[]
+}
+
+model UserTags {
+  id Int @id @default(autoincrement())
+  user_id Int
+  user UserDetails @relation(fields: [user_id], references: [id])
+  tag_id Int
+  tag Tags @relation(fields: [tag_id], references: [id])
 }
