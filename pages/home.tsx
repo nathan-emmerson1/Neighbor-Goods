@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 
+
 export default function Home() {
     const router = useRouter()
 
     const handleStart = () => {
-        router.push('/sign-up-page') //placeholder
+        router.push('/api/auth/signin') //placeholder
     }
 
     return (
