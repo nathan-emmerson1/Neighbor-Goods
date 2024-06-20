@@ -96,6 +96,9 @@ model Jobs {
   restricted Boolean
   location String
   address String
+  is_auction Boolean
+  start_date DateTime
+  end_date DateTime
   Bids Bids[]
 }
 
