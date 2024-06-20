@@ -46,7 +46,7 @@ model Account {
 
 model UserDetails {
   id Int @id @default(autoincrement())
-  user_id Int
+  user_id String
   age Int
   phone String
   location String
