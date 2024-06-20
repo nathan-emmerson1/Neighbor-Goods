@@ -20,6 +20,7 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  user_details UserDetails?
 }
  
 model Account {
@@ -51,6 +52,8 @@ model UserDetails {
   phone String
   location String
   Bids Bids[]
+  Tags UserTags[]
+  user User @relation(fields: [user_id], references: [id])
 }
  
 model Session {
@@ -111,4 +114,18 @@ model Bids {
   job_id Int
   job Jobs @relation(fields: [job_id], references: [id])
   date_posted DateTime @default(now())
+}
+
+model Tags {
+  id Int @id @default(autoincrement())
+  name String
+  user_tags UserTags[]
+}
+
+model UserTags {
+  id Int @id @default(autoincrement())
+  user_id Int
+  user UserDetails @relation(fields: [user_id], references: [id])
+  tag_id Int
+  tag Tags @relation(fields: [tag_id], references: [id])
 }
