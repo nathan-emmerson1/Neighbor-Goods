@@ -29,6 +29,15 @@ CREATE TABLE "Account" (
 );
 
 -- CreateTable
+CREATE TABLE "UserDetails" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "user_id" TEXT NOT NULL,
+    "age" INTEGER NOT NULL,
+    "phone" TEXT NOT NULL,
+    "location" TEXT NOT NULL
+);
+
+-- CreateTable
 CREATE TABLE "Session" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "sessionToken" TEXT NOT NULL,
