@@ -18,27 +18,28 @@ img: 'www.getimage.com.WebP',
 
 function ProfilePage() {
   // Query need to be hook up to api
-  const {data, isPending, isError} = useQuery({
-    queryKey: ['user'],
-    // queryFn: () => fetchUserById(id),
+  // const {data, isPending, isError} = useQuery({
+  //   queryKey: ['user'],
+  //   queryFn: () => fetchUserById(id),
     
-  })
-  if(isPending) return <p>Loading...</p>
-  if(isError) return <p>There was a error</p>
-  console.log(user)
+  // })
+  // if(isPending) return <p>Loading...</p>
+  // if(isError) return <p>There was a error</p>
+  // console.log(user)
   // useing all user data
   return (
-     <div>
+       <div>
  <p>{user.img}</p>
  <p>{user.name}</p>
  <p>{user.email}</p>
  <p>{user.phone}</p>
  <p>{user.location}</p>
  </div>
-
+    
   )
 
 }
 export default ProfilePage
+
 
 
