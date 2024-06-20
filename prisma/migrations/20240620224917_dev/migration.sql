@@ -6,7 +6,9 @@ CREATE TABLE "User" (
     "emailVerified" DATETIME,
     "image" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "updatedAt" DATETIME NOT NULL,
+    "user_details_id" INTEGER NOT NULL,
+    CONSTRAINT "User_user_details_id_fkey" FOREIGN KEY ("user_details_id") REFERENCES "UserDetails" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -34,8 +36,7 @@ CREATE TABLE "UserDetails" (
     "user_id" TEXT NOT NULL,
     "age" INTEGER NOT NULL,
     "phone" TEXT NOT NULL,
-    "location" TEXT NOT NULL,
-    CONSTRAINT "UserDetails_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "location" TEXT NOT NULL
 );
 
 -- CreateTable
@@ -114,6 +115,9 @@ CREATE TABLE "UserTags" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_user_details_id_key" ON "User"("user_details_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");
