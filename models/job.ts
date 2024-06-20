@@ -6,6 +6,9 @@ export interface JobData {
   restricted: boolean
   location: number[]
   address: string
+  images: string[]
+  date: string
+  duration: number
 }
 
 export interface Job extends JobData {
