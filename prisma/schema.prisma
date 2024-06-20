@@ -20,6 +20,7 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  user_details UserDetails[]
 }
  
 model Account {
@@ -52,6 +53,7 @@ model UserDetails {
   location String
   Bids Bids[]
   Tags UserTags[]
+  user User @relation(fields: [user_id], references: [id])
 }
  
 model Session {
