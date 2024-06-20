@@ -46,10 +46,11 @@ model Account {
 
 model UserDetails {
   id Int @id @default(autoincrement())
-  user_id String
+  user_id String @unique
   age Int
   phone String
   location String
+  Bids Bids[]
 }
  
 model Session {
@@ -85,4 +86,26 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@id([userId, credentialID])
+}
+
+model Jobs {
+  id Int @id @default(autoincrement())
+  name String
+  description String
+  Compensation String
+  restricted Boolean
+  location String
+  address String
+  Bids Bids[]
+}
+
+model Bids {
+  id Int @id @default(autoincrement())
+  message String
+  compensation String
+  user_id Int
+  user UserDetails @relation(fields: [user_id], references: [id])
+  job_id Int
+  job Jobs @relation(fields: [job_id], references: [id])
+  date_posted DateTime @default(now())
 }
