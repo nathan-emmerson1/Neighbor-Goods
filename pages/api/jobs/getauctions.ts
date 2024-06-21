@@ -9,9 +9,9 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     try {
-      const auction = await prisma.job.find({
+      const auction = await prisma.job.findMany({
         where: {
-          auction: false,
+          auction: true,
         },
       })
       res.json(auction)

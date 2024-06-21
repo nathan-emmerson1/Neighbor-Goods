@@ -52,6 +52,7 @@ model UserDetails {
   location String
   Bids     Bids[]
   Tags     UserTags[]
+  jobs     Jobs[]
 }
 
 model Session {
@@ -90,7 +91,8 @@ model Authenticator {
 }
 
 model Jobs {
-  id           Int        @id @default(autoincrement())
+  id           Int         @id @default(autoincrement())
+  user_id      Int
   name         String
   description  String
   compensation String
@@ -102,6 +104,7 @@ model Jobs {
   end_date     DateTime
   bids         Bids[]
   comments     Comments[]
+  user         UserDetails @relation(fields: [user_id], references: [id])
 }
 
 model Bids {
