@@ -1,6 +1,5 @@
-import { auth } from '@/auth'
-import { PrismaClient } from '@prisma/client/extension'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { PrismaClient } from '@prisma/client/extension'
 
 const prisma = new PrismaClient()
 
@@ -8,18 +7,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await auth()
-
   if (req.method === 'GET') {
-    const id = req.body || session?.user?.id
     try {
-      const user = await prisma.userDetails.findUnique({
+      const auction = await prisma.job.find({
         where: {
-          user_id: id,
+          auction: false,
         },
       })
-
-      res.json(user)
+      res.json(auction)
     } catch (e) {
       console.error(e)
       res.status(500)
