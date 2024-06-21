@@ -2,7 +2,7 @@ import React from "react";
 import { signIn, useSession, signOut } from "next-auth/react";
 
 export default function Home() {
-  const session = useSession();
+  const session = useSession()
   return (
     <div>
       {session.data?.user?.name}
