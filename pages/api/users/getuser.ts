@@ -13,12 +13,9 @@ export default async function handler(
   if (req.method === 'GET') {
     const id = req.body || session?.user?.id
     try {
-      const user = await prisma.user.findUnique({
+      const user = await prisma.userDetails.findUnique({
         where: {
-          id: id,
-        },
-        include: {
-          user_details: true,
+          user_id: id,
         },
       })
 
