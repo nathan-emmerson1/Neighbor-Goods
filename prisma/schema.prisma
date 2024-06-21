@@ -90,7 +90,7 @@ model Authenticator {
 }
 
 model Jobs {
-  id           Int      @id @default(autoincrement())
+  id           Int        @id @default(autoincrement())
   name         String
   description  String
   compensation String
@@ -100,7 +100,8 @@ model Jobs {
   is_auction   Boolean
   start_date   DateTime
   end_date     DateTime
-  Bids         Bids[]
+  bids         Bids[]
+  comments     Comments[]
 }
 
 model Bids {
@@ -112,6 +113,15 @@ model Bids {
   job_id       Int
   job          Jobs        @relation(fields: [job_id], references: [id])
   date_posted  DateTime    @default(now())
+}
+
+model Comments {
+  id          Int    @id @default(autoincrement())
+  job_id      Int
+  title       String
+  description String
+
+  job Jobs @relation(fields: [job_id], references: [id])
 }
 
 model Tags {
@@ -126,4 +136,10 @@ model UserTags {
   user    UserDetails @relation(fields: [user_id], references: [id])
   tag_id  Int
   tag     Tags        @relation(fields: [tag_id], references: [id])
+}
+
+model JobTags {
+  id     Int @id @default(autoincrement())
+  job_id Int
+  tag_id Int
 }
