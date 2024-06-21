@@ -17,35 +17,52 @@ function ProfilePage() {
   console.log(session.data?.user?.name)
 
   return (
-    <div className="hero min-h-screen">
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage:
-            'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)',
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
-            {/* <h1 className="mb-5 text-5xl font-bold">{user.name}</h1> */}
-            <div className="avatar">
-              <div className="w-24 rounded-full pt-4">
-                <img src="https://live.staticflickr.com/5323/9200266730_77b9a04c58_c.jpg" />
-                {/* <h1 className="mb-5 text-5xl font-bold">{user.name}</h1> */}
-              </div>
-              <h1 className="mt-8 text-3xl font-bold ">{user.name}</h1>
+   <div className=" mt-40 relative max-w-md mx-auto md:max-w-2xl  min-w-0 break-words bg-white w-full  shadow-lg rounded-xl ">
+    <div className="px-6 ">
+        <div className="flex flex-wrap justify-center">
+            <div className="w-full flex justify-center">
+                <div className="relative">
+                    <img src="https://www.creativefabrica.com/wp-content/uploads/2022/11/19/3D-Portrait-Of-Bart-Simpson-47427653-1.png" className="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"/>
+                </div>
             </div>
-            <div className=' className="card w-96 bg-base-100 shadow-xl rouded-xl">'>
-              <div className="mb-5 ">{user.email}</div>
-              <div className="mb-5 pb-1">{user.phone}</div>
-              <button className="btn btn-primary">Edit Profile</button>
-              <button className="btn btn-primary">Contact</button>
+            <div className="w-full text-center mt-20">
+                <div className="flex justify-center lg:pt-4 pt-8 pb-0">
+                    <div className="p-3 text-center">
+                        <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">3,360</span>
+                        <span className="text-sm text-slate-400">Reviews</span>
+                    </div>
+                    <div className="p-3 text-center">
+                        <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">2,454</span>
+                        <span className="text-sm text-slate-400">Karma Points</span>
+                    </div>
+
+                    <div className="p-3 text-center">
+                        <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">564</span>
+                        <span className="text-sm text-slate-400">Reviewed</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+        <div className="text-center mt-2">
+            <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-1">Bart</h3>
+            <div className="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
+                <i className="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>Tauranga
+            </div>
+        </div>
+        <div className="mt-6 py-6 border-t border-slate-200 text-center">
+            <div className="flex flex-wrap justify-center">
+                <div className="w-full px-4">
+                    <p className="font-light leading-relaxed text-slate-600 mb-4">i want to learn how to play guiter</p>
+                    <a href="javascript:;" className="font-normal text-slate-700 hover:text-slate-400">Edit Profile</a>
+                    <a href='javascript' className=' ml-4 font-normal text-slate-700 hover:text-slate-400'>Contact</a>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+
+
   )
 }
 export default ProfilePage
