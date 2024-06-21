@@ -2,7 +2,6 @@ import { NextApiRequest as Req, NextApiResponse as Res } from "next";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
 export default async function handler(req: Req, res: Res) {
   if (req.method === "GET") {
     try {
