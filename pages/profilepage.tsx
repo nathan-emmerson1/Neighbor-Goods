@@ -14,6 +14,8 @@ const user: UserData = {
 
 function ProfilePage() {
   const session = useSession()
+  
+
   console.log(session.data?.user?.name)
 
   return (
@@ -44,7 +46,7 @@ function ProfilePage() {
             </div>
         </div>
         <div className="text-center mt-2">
-            <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-1">Bart</h3>
+            <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-1">{user.name}</h3>
             <div className="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
                 <i className="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>Tauranga
             </div>
