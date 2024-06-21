@@ -3,7 +3,7 @@ export interface JobData {
   description: string
   compensation: string
   restricted: boolean
-  location: number[]
+  location: string
   address: string
   is_auction: boolean
   start_date: Date

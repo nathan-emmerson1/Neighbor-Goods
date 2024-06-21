@@ -17,15 +17,23 @@ export default async function handler(
         throw new Error()
       }
       const newJob: Job = req.body
-      prisma.jobs.create({
+      await prisma.jobs.create({
         data: {
           name: newJob.name,
           description: newJob.description,
           compensation: newJob.compensation,
           restricted: newJob.restricted,
           location: newJob.location,
+          address: newJob.address,
+          is_auction: newJob.is_auction,
+          start_date: newJob.start_date,
+          end_date: newJob.end_date,
         },
       })
-    } catch (e) {}
+      res.json(newJob)
+    } catch (e) {
+      console.error(e)
+      res.status(500)
+    }
   }
 }
