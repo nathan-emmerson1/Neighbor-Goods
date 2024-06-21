@@ -5,7 +5,7 @@ export function useJobs(pageNum: number) {
   return useQuery({
     queryKey: ["jobs", pageNum],
     queryFn: async () => {
-      const data = await request.get("api/jobs/getjobs");
+      const data = await request.get(`api/jobs/${pageNum}`);
       return data;
     },
   });
