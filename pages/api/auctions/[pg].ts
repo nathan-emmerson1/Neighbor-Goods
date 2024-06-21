@@ -1,4 +1,3 @@
-
 import { NextApiRequest as Req, NextApiResponse as Res } from "next";
 import { PrismaClient } from "@prisma/client";
 import { Job } from "@/models/job";
