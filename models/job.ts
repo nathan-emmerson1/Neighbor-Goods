@@ -8,6 +8,7 @@ export interface JobData {
   is_auction: boolean
   start_date: Date
   end_date: Date
+  userId: number
 }
 
 export interface Job extends JobData {

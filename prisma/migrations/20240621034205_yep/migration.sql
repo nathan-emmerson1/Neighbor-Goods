@@ -73,6 +73,7 @@ CREATE TABLE "Authenticator" (
 -- CreateTable
 CREATE TABLE "Jobs" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "compensation" TEXT NOT NULL,
@@ -81,7 +82,8 @@ CREATE TABLE "Jobs" (
     "address" TEXT NOT NULL,
     "is_auction" BOOLEAN NOT NULL,
     "start_date" DATETIME NOT NULL,
-    "end_date" DATETIME NOT NULL
+    "end_date" DATETIME NOT NULL,
+    CONSTRAINT "Jobs_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "UserDetails" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -97,6 +99,15 @@ CREATE TABLE "Bids" (
 );
 
 -- CreateTable
+CREATE TABLE "Comments" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "job_id" INTEGER NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    CONSTRAINT "Comments_job_id_fkey" FOREIGN KEY ("job_id") REFERENCES "Jobs" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
 CREATE TABLE "Tags" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL
@@ -109,6 +120,13 @@ CREATE TABLE "UserTags" (
     "tag_id" INTEGER NOT NULL,
     CONSTRAINT "UserTags_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "UserDetails" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "UserTags_tag_id_fkey" FOREIGN KEY ("tag_id") REFERENCES "Tags" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "JobTags" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "job_id" INTEGER NOT NULL,
+    "tag_id" INTEGER NOT NULL
 );
 
 -- CreateIndex

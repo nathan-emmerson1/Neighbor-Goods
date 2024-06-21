@@ -12,6 +12,11 @@ export default async function handler(
   if (req.method === 'POST') {
     try {
       const userId = session?.user?.id
+      const detailsId = Number(getUserId())
+      if (detailsId == undefined) {
+        res.status(500)
+        throw new Error()
+      }
       if (userId == undefined) {
         res.status(500)
         throw new Error()
@@ -28,6 +33,7 @@ export default async function handler(
           is_auction: newJob.is_auction,
           start_date: newJob.start_date,
           end_date: newJob.end_date,
+          user_id: detailsId,
         },
       })
       res.json(newJob)
@@ -36,4 +42,17 @@ export default async function handler(
       res.status(500)
     }
   }
+}
+
+async function getUserId(): Promise<number | undefined> {
+  const session = await auth()
+  const userId = session?.user?.id
+
+  const detailsId = await prisma.userDetails.findUnique({
+    where: {
+      user_id: userId,
+    },
+  })
+
+  return Number(detailsId?.id)
 }
