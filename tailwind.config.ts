@@ -7,31 +7,30 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   daisyui: {
-      themes: [
-        {
-          mytheme: {
-          
-            "primary": "#01579b",
-          
-            "secondary": "#50a3cc",
-          
-            "accent": "#fb8c00",
-          
-            "neutral": "#ffca28",
-          
-            "base-100": "#f4f4f4",
-          
-           "info": "#93c5fd",
-          
-            "success": "#10b981",
-          
-            "warning": "#9d174d",
-          
-            "error": "#881337",
-          },
+    themes: [
+      {
+        mytheme: {
+          primary: '#01579b',
+
+          secondary: '#50a3cc',
+
+          accent: '#fb8c00',
+
+          neutral: '#ffca28',
+
+          'base-100': '#f4f4f4',
+
+          info: '#93c5fd',
+
+          success: '#10b981',
+
+          warning: '#9d174d',
+
+          error: '#881337',
         },
-      ],
-    },
+      },
+    ],
+  },
   theme: {
     extend: {
       backgroundImage: {
@@ -41,14 +40,7 @@ const config: Config = {
       },
     },
   },
-<<<<<<< HEAD
+
   plugins: [require('daisyui')],
 }
 export default config
-=======
-  plugins: [
-    require('daisyui'),
-  ],
-};
-export default config;
->>>>>>> main
