@@ -10,13 +10,9 @@ export default async function handler(
 ) {
   const session = await auth()
 
-  if (req.method === 'SEND' || req.method === 'POST') {
+  if (req.method === 'GET') {
     const id = req.body || session?.user?.id
     try {
-      if (id === undefined) {
-        res.status(500)
-        throw new Error()
-      }
       const user = await prisma.user.findUnique({
         where: {
           id: id,

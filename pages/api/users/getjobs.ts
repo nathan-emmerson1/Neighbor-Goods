@@ -7,7 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'SEND') {
+  if (req.method === 'GET') {
     try {
       const auction = await prisma.job.find({
         where: {
