@@ -22,7 +22,7 @@ export default function SignUp() {
         className="hero min-h-screen"
         style={{ backgroundImage: "url(/images/background-image.png" }}
       >
-        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-overlay bg-black bg-opacity-0"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <div className="card card-compact w-96 bg-base-100 shadow-xl">

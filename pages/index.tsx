@@ -27,7 +27,7 @@ export default function Home() {
         <div className="absolute top-0 right-0 m-4 flex space-x-4">{session.data?.user?.name}<button className='btn glass' onClick={handleAuth}>{session?.data?.user ? 'Logout' : 'Login'}</button>
         </div>
 
-            <div className="hero-overlay bg-opacity-60"></div>
+            <div className="hero-overlay bg-black bg-opacity-0"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">NeighbourGoods</h1>
@@ -35,7 +35,7 @@ export default function Home() {
                     <br></br>
                     <br></br>
                     Sign Up Now and Make a Difference!</p>
-                    <button className="btn btn-primary" onClick={handleStart}>Start here</button>
+                    <button className="btn btn-primary" onClick={handleStart}>Get started</button>
                 </div>
             </div>
         </div>
