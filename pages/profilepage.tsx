@@ -23,6 +23,7 @@ function ProfilePage() {
       <div>{user.age}</div>
       <div>{user.email}</div>
       <div>{user.phone}</div>
+      <div>this a test</div>
     </div>
   )
 }
