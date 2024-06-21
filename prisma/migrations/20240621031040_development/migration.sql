@@ -6,9 +6,7 @@ CREATE TABLE "User" (
     "emailVerified" DATETIME,
     "image" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
-    "user_details_id" INTEGER NOT NULL,
-    CONSTRAINT "User_user_details_id_fkey" FOREIGN KEY ("user_details_id") REFERENCES "UserDetails" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
@@ -77,7 +75,7 @@ CREATE TABLE "Jobs" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "Compensation" TEXT NOT NULL,
+    "compensation" TEXT NOT NULL,
     "restricted" BOOLEAN NOT NULL,
     "location" TEXT NOT NULL,
     "address" TEXT NOT NULL,
@@ -115,9 +113,6 @@ CREATE TABLE "UserTags" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "User_user_details_id_key" ON "User"("user_details_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");

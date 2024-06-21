@@ -4,8 +4,9 @@ export interface JobData {
   description: string
   compensation: string
   restricted: boolean
-  location: number[]
+  location: string
   address: string
+  isAuction: boolean
 }
 
 export interface Job extends JobData {
