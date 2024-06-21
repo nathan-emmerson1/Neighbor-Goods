@@ -11,7 +11,7 @@ export default async function handler(
     try {
       const auction = await prisma.job.find({
         where: {
-          auction: true,
+          auction: false,
         },
       })
       res.json(auction)
