@@ -1,10 +1,25 @@
-import React from 'react'
-import { useSession } from 'next-auth/react'
+import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const session = useSession()
+  const session = useSession();
+  const router = useRouter();
   return (
-    <div>{session.data?.user?.name}<button className='btn btn-primary'>test</button></div>
-  )
+    <div>
+      {session.data?.user?.name}
+      <button
+        className="btn btn-primary"
+        onClick={() => router.push("/api/auth/signin")}
+      >
+        Login
+      </button>
+      <button
+        className="btn btn-primary"
+        onClick={() => router.push("/api/auth/signout")}
+      >
+        Logout
+      </button>
+    </div>
+  );
 }
-

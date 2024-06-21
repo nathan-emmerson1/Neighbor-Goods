@@ -70,11 +70,73 @@ CREATE TABLE "Authenticator" (
     CONSTRAINT "Authenticator_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- CreateTable
+CREATE TABLE "Jobs" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "compensation" TEXT NOT NULL,
+    "restricted" BOOLEAN NOT NULL,
+    "location" TEXT NOT NULL,
+    "address" TEXT NOT NULL,
+    "is_auction" BOOLEAN NOT NULL,
+    "start_date" DATETIME NOT NULL,
+    "end_date" DATETIME NOT NULL,
+    CONSTRAINT "Jobs_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "UserDetails" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Bids" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "message" TEXT NOT NULL,
+    "compensation" TEXT NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "job_id" INTEGER NOT NULL,
+    "date_posted" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "Bids_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "UserDetails" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Bids_job_id_fkey" FOREIGN KEY ("job_id") REFERENCES "Jobs" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Comments" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "job_id" INTEGER NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    CONSTRAINT "Comments_job_id_fkey" FOREIGN KEY ("job_id") REFERENCES "Jobs" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Tags" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "UserTags" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER NOT NULL,
+    "tag_id" INTEGER NOT NULL,
+    CONSTRAINT "UserTags_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "UserDetails" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "UserTags_tag_id_fkey" FOREIGN KEY ("tag_id") REFERENCES "Tags" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "JobTags" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "job_id" INTEGER NOT NULL,
+    "tag_id" INTEGER NOT NULL
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "UserDetails_user_id_key" ON "UserDetails"("user_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
