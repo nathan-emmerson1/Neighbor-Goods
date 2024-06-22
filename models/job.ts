@@ -1,14 +1,14 @@
 export interface JobData {
-  tag_id: number
+  user_id?: number
   name: string
   description: string
   compensation: string
   restricted: boolean
-  location: number[]
+  location: string
   address: string
-  images: string[]
-  date: string
-  duration: number
+  is_auction: boolean
+  start_date: Date
+  end_date: Date
 }
 
 export interface Job extends JobData {
