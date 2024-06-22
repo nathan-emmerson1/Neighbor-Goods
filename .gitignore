@@ -38,8 +38,4 @@ next-env.d.ts
 prisma/db.dev
 prisma/db.dev-journal
 *.db
-<<<<<<< HEAD
 *.db-journal
-=======
-*.db-journal
->>>>>>> main
