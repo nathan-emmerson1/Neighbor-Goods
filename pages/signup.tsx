@@ -6,7 +6,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("")
 
-  const signUpWithGoogle = () => {
+  const signInWithGoogle = () => {
     // Google sign up logic here
   };
 
@@ -55,7 +55,7 @@ export default function SignUp() {
                   </label>
                 </form>
                 <button className="btn btn-primary">Sign up</button>
-                <button className="btn" onClick={signUpWithGoogle}>
+                <button className="btn" onClick={signInWithGoogle}>
                   Sign in with Google
                 </button>
                 <div className="card-actions justify-end">
