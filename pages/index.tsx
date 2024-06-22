@@ -1,25 +1,26 @@
 import React from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { signIn, useSession, signOut } from "next-auth/react";
+import { useIsUser } from "@/hooks/isUser";
 
 export default function Home() {
-  const session = useSession();
-  const router = useRouter();
+  const {data: session} = useSession()
+  console.log(session)
   return (
     <div>
-      {session.data?.user?.name}
+      {session?.user.name}
       <button
         className="btn btn-primary"
-        onClick={() => router.push("/api/auth/signin")}
+        onClick={() => signIn()}
       >
         Login
       </button>
       <button
         className="btn btn-primary"
-        onClick={() => router.push("/api/auth/signout")}
+        onClick={() => signOut()}
       >
         Logout
       </button>
+      <button onClick={() => console.log(useIsUser())}>checkUser</button>
     </div>
   );
 }
