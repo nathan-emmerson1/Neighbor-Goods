@@ -2,11 +2,11 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
- 
+
 generator client {
   provider = "prisma-client-js"
 }
- 
+
 model User {
   id            String          @id @default(cuid())
   name          String?
@@ -17,13 +17,11 @@ model User {
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user_details_id Int @unique
-  user_details UserDetails @relation(fields: [user_details_id], references: [id])
 }
- 
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -37,45 +35,45 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@unique([provider, providerAccountId])
 }
 
 model UserDetails {
-  id Int @id @default(autoincrement())
-  user_id String @unique
-  age Int
-  phone String
+  id       Int        @id @default(autoincrement())
+  user_id  String     @unique
+  age      Int
+  phone    String
   location String
-  Bids Bids[]
-  Tags UserTags[]
-  user User?
+  Bids     Bids[]
+  Tags     UserTags[]
+  jobs     Jobs[]
 }
- 
+
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
- 
+
 model VerificationToken {
   identifier String
   token      String
   expires    DateTime
- 
+
   @@unique([identifier, token])
 }
- 
+
 // Optional for WebAuthn support
 model Authenticator {
   credentialID         String  @unique
@@ -86,47 +84,65 @@ model Authenticator {
   credentialDeviceType String
   credentialBackedUp   Boolean
   transports           String?
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([userId, credentialID])
 }
 
 model Jobs {
-  id Int @id @default(autoincrement())
-  name String
-  description String
+  id           Int         @id @default(autoincrement())
+  user_id      Int
+  name         String
+  description  String
   compensation String
-  restricted Boolean
-  location String
-  address String
-  is_auction Boolean
-  start_date DateTime
-  end_date DateTime
-  Bids Bids[]
+  restricted   Boolean
+  location     String
+  address      String
+  is_auction   Boolean
+  start_date   DateTime
+  end_date     DateTime
+  bids         Bids[]
+  comments     Comments[]
+  user         UserDetails @relation(fields: [user_id], references: [id])
 }
 
 model Bids {
-  id Int @id @default(autoincrement())
-  message String
+  id           Int         @id @default(autoincrement())
+  message      String
   compensation String
-  user_id Int
-  user UserDetails @relation(fields: [user_id], references: [id])
-  job_id Int
+  user_id      Int
+  user         UserDetails @relation(fields: [user_id], references: [id])
+  job_id       Int
+  job          Jobs        @relation(fields: [job_id], references: [id])
+  date_posted  DateTime    @default(now())
+}
+
+model Comments {
+  id          Int    @id @default(autoincrement())
+  job_id      Int
+  title       String
+  description String
+
   job Jobs @relation(fields: [job_id], references: [id])
-  date_posted DateTime @default(now())
 }
 
 model Tags {
-  id Int @id @default(autoincrement())
-  name String
+  id        Int        @id @default(autoincrement())
+  name      String
   user_tags UserTags[]
 }
 
 model UserTags {
-  id Int @id @default(autoincrement())
+  id      Int         @id @default(autoincrement())
   user_id Int
-  user UserDetails @relation(fields: [user_id], references: [id])
+  user    UserDetails @relation(fields: [user_id], references: [id])
+  tag_id  Int
+  tag     Tags        @relation(fields: [tag_id], references: [id])
+}
+
+model JobTags {
+  id     Int @id @default(autoincrement())
+  job_id Int
   tag_id Int
-  tag Tags @relation(fields: [tag_id], references: [id])
 }

@@ -1,6 +1,6 @@
+import React from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React from 'react'
-import { useSession } from 'next-auth/react'
 
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
             <div className="hero-overlay bg-black bg-opacity-0"></div>
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">NeighbourGoods</h1>
+                    <h1 className="mb-5 text-5xl font-bold">NeighbourGood</h1>
                     <p className="mb-5">Discover the power of a connected neighborhood! Share skills, find local jobs within your community. It's time to build a stronger, more supportive network together.
                     <br></br>
                     <br></br>
