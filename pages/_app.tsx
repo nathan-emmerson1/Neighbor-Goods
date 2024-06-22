@@ -2,6 +2,8 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { SessionProvider } from 'next-auth/react'
+import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 
 const queryClient = new QueryClient()
 
@@ -12,9 +14,9 @@ export default function App({
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider session={session}>
-        <h1>test</h1>
+        <Navbar />
         <Component {...pageProps} />
-        <h1>footer</h1>
+        <Footer />
       </SessionProvider>
     </QueryClientProvider>
   )
