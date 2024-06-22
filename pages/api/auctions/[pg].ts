@@ -8,7 +8,7 @@ export default async function handler(req: Req, res: Res<Job[]>) {
   if (req.method === 'GET') {
     try {
       const pageNum: number = Number(req.query.pg) || 0
-      const pageAmount: number = 9
+      const pageAmount: number = 10
       const skip: number = pageNum * pageAmount
       const auction: Job[] = await prisma.jobs.findMany({
         take: pageAmount,
