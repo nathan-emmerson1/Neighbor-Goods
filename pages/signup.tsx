@@ -12,6 +12,7 @@ export default function SignUp() {
 
   const signUpWithEmail = () => {
     // What's the go with no passwords??
+    router.push('/onboarding')
   };
 
   // do we want sign up with facebook? old peoiple use facebook
@@ -54,7 +55,7 @@ export default function SignUp() {
                     <input type="text" className="grow" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                   </label>
                 </form>
-                <button className="btn btn-primary">Sign up</button>
+                <button className="btn btn-primary" onClick={signUpWithEmail}>Sign up</button>
                 <button className="btn" onClick={signInWithGoogle}>
                   Sign in with Google
                 </button>

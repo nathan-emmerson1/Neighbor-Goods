@@ -5,9 +5,7 @@ import { useRouter } from "next/router";
 
 
 export default function Home() {
- // const {data: session} = useSession()
-
-  const session = useSession()
+  const {data: session} = useSession()
   const router = useRouter()
   
 
@@ -16,10 +14,10 @@ export default function Home() {
     }
 
     const handleAuth = () => {
-        if (session.data?.user) {
-            router.push('/api/auth/signout')
+        if (session?.user) {
+            signOut()
         } else {
-            router.push(('/api/auth/signin'))
+            signIn()
         }
     }
 
@@ -28,7 +26,7 @@ export default function Home() {
         
         <div className="hero min-h-screen" style={{backgroundImage: 'url(/images/background-image.png'}}>
        
-        <div className="absolute top-0 right-0 m-4 flex space-x-4">{session.data?.user?.name}<button className='btn glass' onClick={handleAuth}>{session?.data?.user ? 'Logout' : 'Login'}</button>
+        <div className="absolute top-0 right-0 m-4 flex space-x-4">{session?.user?.name}<button className='btn glass' onClick={handleAuth}>{session?.user ? 'Logout' : 'Login'}</button>
         </div>
 
             <div className="hero-overlay bg-black bg-opacity-0"></div>
