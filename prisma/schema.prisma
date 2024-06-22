@@ -2,11 +2,19 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+<<<<<<< HEAD
  
 generator client {
   provider = "prisma-client-js"
 }
  
+=======
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+>>>>>>> main
 model User {
   id            String          @id @default(cuid())
   name          String?
@@ -17,11 +25,19 @@ model User {
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
+<<<<<<< HEAD
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
  
+=======
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+>>>>>>> main
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -35,6 +51,7 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
+<<<<<<< HEAD
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -44,25 +61,62 @@ model Account {
   @@unique([provider, providerAccountId])
 }
  
+=======
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model UserDetails {
+  id       Int        @id @default(autoincrement())
+  user_id  String     @unique
+  age      Int
+  phone    String
+  location String
+  Bids     Bids[]
+  Tags     UserTags[]
+  jobs     Jobs[]
+}
+
+>>>>>>> main
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+<<<<<<< HEAD
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
  
+=======
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+>>>>>>> main
 model VerificationToken {
   identifier String
   token      String
   expires    DateTime
+<<<<<<< HEAD
  
   @@unique([identifier, token])
 }
  
+=======
+
+  @@unique([identifier, token])
+}
+
+>>>>>>> main
 // Optional for WebAuthn support
 model Authenticator {
   credentialID         String  @unique
@@ -73,8 +127,73 @@ model Authenticator {
   credentialDeviceType String
   credentialBackedUp   Boolean
   transports           String?
+<<<<<<< HEAD
  
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@id([userId, credentialID])
 }
+=======
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
+}
+
+model Jobs {
+  id           Int         @id @default(autoincrement())
+  user_id      Int
+  name         String
+  description  String
+  compensation String
+  restricted   Boolean
+  location     String
+  address      String
+  is_auction   Boolean
+  start_date   DateTime
+  end_date     DateTime
+  bids         Bids[]
+  comments     Comments[]
+  user         UserDetails @relation(fields: [user_id], references: [id])
+}
+
+model Bids {
+  id           Int         @id @default(autoincrement())
+  message      String
+  compensation String
+  user_id      Int
+  user         UserDetails @relation(fields: [user_id], references: [id])
+  job_id       Int
+  job          Jobs        @relation(fields: [job_id], references: [id])
+  date_posted  DateTime    @default(now())
+}
+
+model Comments {
+  id          Int    @id @default(autoincrement())
+  job_id      Int
+  title       String
+  description String
+
+  job Jobs @relation(fields: [job_id], references: [id])
+}
+
+model Tags {
+  id        Int        @id @default(autoincrement())
+  name      String
+  user_tags UserTags[]
+}
+
+model UserTags {
+  id      Int         @id @default(autoincrement())
+  user_id Int
+  user    UserDetails @relation(fields: [user_id], references: [id])
+  tag_id  Int
+  tag     Tags        @relation(fields: [tag_id], references: [id])
+}
+
+model JobTags {
+  id     Int @id @default(autoincrement())
+  job_id Int
+  tag_id Int
+}
+>>>>>>> main
