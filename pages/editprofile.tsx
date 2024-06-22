@@ -3,7 +3,11 @@ import react from 'react'
 import { useSession } from 'next-auth/react'
 
 function EditProfile() {
+  // will need to add useState variables
+  // useMutation for the forms to edit profile
+  // import/make hooks
   const session = useSession()
+  console.log(session.data?.user)
 
   return (
     <div className="hero min-h-screen"
@@ -64,7 +68,7 @@ function EditProfile() {
                 <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
                   <img
                     className="border-solid border-4 border-secondary object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                    src={session.data?.user.image}
                     alt="Bordered avatar"
                   />
                   <div className="flex flex-col space-y-5 sm:ml-8">
