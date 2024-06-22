@@ -1,17 +1,17 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 
 export default function Home() {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleStart = () => {
-    router.push("/api/auth/signin"); //placeholder
-  };
+    router.push('/api/auth/signin') //placeholder
+  }
 
   return (
     <>
       <div
         className="hero min-h-screen"
-        style={{ backgroundImage: "url(/images/background-image.png" }}
+        style={{ backgroundImage: 'url(/images/background-image.png' }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -32,5 +32,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  );
+  )
 }
