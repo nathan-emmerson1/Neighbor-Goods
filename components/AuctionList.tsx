@@ -1,8 +1,12 @@
 'use client'
 import { useAuctions } from "@/hooks/fetchAuctions"
 
-export default function AuctionList(pageNum: number) {
-  const { data: auctions, isPending, isError } = useAuctions(pageNum)
+interface Props {
+  pageNum: number
+}
+
+export default function AuctionList(props: Props) {
+  const { data: auctions, isPending, isError } = useAuctions(props.pageNum)
 
   if (isPending) {
     return <p>Loading state</p>

@@ -3,11 +3,11 @@ import { signIn, useSession, signOut } from "next-auth/react";
 import { useIsUser } from "@/hooks/isUser";
 
 export default function Home() {
-  const session = useSession()
+  const {data: session} = useSession()
+  console.log(session)
   return (
     <div>
-      {session.data?.user?.name}
-      {session.data?.user?.id}
+      {session?.user.name}
       <button
         className="btn btn-primary"
         onClick={() => signIn()}
