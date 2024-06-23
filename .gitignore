@@ -42,4 +42,4 @@ prisma/db.dev-journal
 *.db-journal
 =======
 *.db-journal
->>>>>>> main
+migrations

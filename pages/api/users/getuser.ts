@@ -4,13 +4,12 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 const prisma = new PrismaClient()
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const session = await auth()
-
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
+    const session = await auth(req, res)
+    if (!session) {
+      res.status(401)
+    }
     const id = req.body || session?.user?.id
     try {
       const user = await prisma.userDetails.findUnique({
