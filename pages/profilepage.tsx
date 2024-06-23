@@ -4,6 +4,8 @@ import react from 'react'
 import { useSession } from 'next-auth/react'
 import { userAgent } from 'next/server'
 import { UserDetails } from '@/models/userDetails'
+import {useIsUser} from '../hooks/isUser'
+import useRouter from ''
 
 // const user: UserDetails = {
 //   name: 'Johnny',
@@ -14,7 +16,8 @@ import { UserDetails } from '@/models/userDetails'
 
 function ProfilePage() {
   const session = useSession()
-
+  const signIn = useIsUser()
+  if (!signIn) return <Home />
   console.log(session.data?.user)
 
   return (
@@ -96,10 +99,7 @@ function ProfilePage() {
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-=======
     
->>>>>>> main
   )
 }
 export default ProfilePage
