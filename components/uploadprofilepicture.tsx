@@ -4,7 +4,7 @@ import { useState } from "react"
 export default function UploadProfilePicture() {
     const [selectedImage, setSelectedImage] = useState('')
 
-    const handleImageUpload = async (e) => {
+    const handleImageUpload = async (e: any) => {
         const file = e.target.files[0]
         if (file) {
             const imageURL = URL.createObjectURL(file)

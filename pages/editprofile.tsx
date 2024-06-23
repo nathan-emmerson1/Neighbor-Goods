@@ -16,16 +16,6 @@ function EditProfile() {
     <div className="hero min-h-screen"
         style={{ backgroundImage: 'url(/images/background-image.png' }} >
     <div>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="true"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet"
-      />
 
       
       
@@ -65,7 +55,7 @@ function EditProfile() {
                 <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
                   <img
                     className="border-solid border-4 border-secondary object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                    src={session.data?.user.image}
+                    //src={session.data?.user.image}
                     alt="Bordered avatar"
                   />
                   <div className="flex flex-col space-y-5 sm:ml-8">
@@ -116,7 +106,7 @@ function EditProfile() {
                     </label>
                     <textarea
                       id="message"
-                      rows="4"
+                      //rows = 4
                       className="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500"
                       placeholder="Write your bio here..."
                     ></textarea>
