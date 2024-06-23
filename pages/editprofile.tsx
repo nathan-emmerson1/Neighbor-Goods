@@ -25,13 +25,7 @@ function EditProfile() {
         rel="stylesheet"
       />
 
-      {/* <style>
-        {`
-          body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-          }
-        `}
-      </style> */}
+      
       
 
       <div className="bg-white flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931] ">
