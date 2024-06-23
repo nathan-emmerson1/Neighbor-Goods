@@ -18,6 +18,10 @@ function ProfilePage() {
   console.log(session.data?.user)
 
   return (
+    
+
+
+
     <div
       className="hero min-h-screen"
       style={{ backgroundImage: 'url(/images/background-image.png' }}
@@ -92,6 +96,10 @@ function ProfilePage() {
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> main
   )
 }
 export default ProfilePage
