@@ -5,12 +5,12 @@ import { useSession } from 'next-auth/react'
 import { userAgent } from 'next/server'
 import { UserDetails } from '@/models/userDetails'
 
-const user: UserDetails = {
-  name: 'Johnny',
-  age: 26,
-  email: 'johnnyy0889@gmail.com',
-  phone: '0223634747',
-}
+// const user: UserDetails = {
+//   name: 'Johnny',
+//   age: 26,
+//   email: 'johnnyy0889@gmail.com',
+//   phone: '0223634747',
+// }
 
 function ProfilePage() {
   const session = useSession()
