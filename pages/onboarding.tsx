@@ -7,7 +7,7 @@ import SkillsList from "@/components/skillslist";
 
 export default function Onboarding() {
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
-    MultiStepUserDetails([<Location />, <UploadProfilePicture />, <SkillsList />]);
+    MultiStepUserDetails([<Location />, <SkillsList />, <UploadProfilePicture /> ]);
 
   const handleNext = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
