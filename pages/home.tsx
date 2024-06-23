@@ -19,7 +19,7 @@ export default function Home() {
             <h1 className="mb-5 text-5xl font-bold">NeighbourGoods</h1>
             <p className="mb-5">
               Discover the power of a connected neighborhood! Share skills, find
-              local jobs within your community. It's time to build a stronger,
+              local jobs within your community. Its time to build a stronger,
               more supportive network together.
               <br></br>
               <br></br>
