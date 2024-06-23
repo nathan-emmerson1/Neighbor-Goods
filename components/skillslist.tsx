@@ -1,38 +1,34 @@
-import { useState } from "react"
-
+import { Skill } from "@/models/skill"
     // something where the tags are generated
     // do we include interests? link them to marketplace items they might be interested in
 
 
 const skillsList = [
-    'Gardening',
-    'Cleaning',
-    'Cooking',
-    'Building',
-    'Mechanics',
-    'Crafts',
-    'Health',
-    'Fitness',
-    'Art',
-    'Music',
-    'Education',
-    'Tutoring',
-    'Food',
-    'Sport',
-    'Culture',
-    'Language',
-    'Other'
+    {name: 'Gardening', selected: false},
+    {name: 'Cleaning', selected: false},
+    {name: 'Cooking', selected: false},
+    {name: 'Building', selected: false},
+    {name: 'Mechanics', selected: false},
+    {name: 'Crafts', selected: false},
+    {name: 'Health', selected: false},
+    {name: 'Fitness', selected: false},
+    {name: 'Art', selected: false},
+    {name: 'Music', selected: false},
+    {name: 'Education', selected: false},
+    {name: 'Tutoring', selected: false},
+    {name: 'Food', selected: false},
+    {name: 'Sport', selected: false},
+    {name: 'Culture', selected: false},
+    {name: 'Language',selected: false},
+    {name: 'Other', selected: false},
 ]
 
 export default function SkillsList() {
-    const [selectedSkills, setSelectedSkills] = useState<string[]>([])
+    let skills : Skill[] = []
 
-    const toggleSkill = (skill: string) => {
-        setSelectedSkills(prev =>
-            prev.includes(skill)
-            ? prev.filter(item => item !== skill)
-            : [...prev, skill]
-        )
+    const toggleSkill = (skill: Skill) => {
+        skills.push(skill)
+        
     }
     // const handleSubmit = () => {
     //     alert(`You have selected: ${selectedSkills.join(', ')}`)
@@ -44,11 +40,11 @@ export default function SkillsList() {
         <div className="flex flex-wrap gap-3 justify-center">
             {skillsList.map(skill => (
                 <button
-                    key={skill}
-                    className={`px-4 py-2 border rounded-full ${selectedSkills.includes(skill) ? 'bg-blue-500 text-white' : 'bg-white text-black border gray-300'
+                    key={skill.name}
+                    className={`px-4 py-2 border rounded-full ${skills.includes(skill) ? 'bg-blue-500 text-white' : 'bg-white text-black border gray-300'
                     }`}
                     onClick={() => toggleSkill(skill)}>
-                        {skill}
+                        {skill.name}
                     </button>
             ))}
       
