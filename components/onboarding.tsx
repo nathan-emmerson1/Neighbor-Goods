@@ -24,7 +24,7 @@ const skillsList = [
   "Other",
 ];
 
-export default async function Onboarding() {
+export default function Onboarding() {
   const router = useRouter()
   
   const [userDetails, setUserDetails] = useState({
@@ -58,7 +58,7 @@ export default async function Onboarding() {
 
   const [selectedImage, setSelectedImage] = useState("");
 
-  const handleImageUpload = async (e: any) => {
+  const handleImageUpload = (e: any) => {
     const file = e.target.files[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
