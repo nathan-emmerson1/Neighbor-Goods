@@ -1,9 +1,11 @@
 'use client'
-import react from 'react'
+import react, { useState } from 'react'
 import { useSession } from 'next-auth/react'
 
 function EditProfile() {
   // will need to add useState variables
+  const [bio, setNewBio] = useState('')
+
   // useMutation for the forms to edit profile
   // import/make hooks
   
