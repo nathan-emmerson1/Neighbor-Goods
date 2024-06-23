@@ -34,7 +34,7 @@ export default function Home() {
                 <div className="max-w-md">
                   <div className="rounded-lg shadow-xl backdrop-blur-sm border border-white/30">
                     <h1 className="mb-5 text-5xl font-bold">NeighbourGood</h1>
-                    <p className="mb-5">Discover the power of a connected neighborhood! Share skills, find local jobs within your community. It's time to build a stronger, more supportive network together.
+                    <p className="mb-5">Discover the power of a connected neighborhood! Share skills, find local jobs within your community. Its time to build a stronger, more supportive network together.
                     <br></br>
                     <br></br>
                     Sign Up Now and Make a Difference!</p>
