@@ -5,8 +5,6 @@ export interface UserDetails {
   age: number
   phone: string
   location: string
-  createdAt: DateTime
-  updatedAt: DateTime
 }
 
 export interface UserDetailsData extends UserDetails {
