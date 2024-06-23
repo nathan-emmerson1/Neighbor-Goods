@@ -18,6 +18,8 @@ export default function Onboarding() {
     e.preventDefault()
     back()
   }
+
+  
   
   return (
     <>
