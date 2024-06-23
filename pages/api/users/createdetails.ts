@@ -5,12 +5,12 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await auth()
+  const session = await auth(req, res)
   if (req.method == "POST") {
     try {
       const userId = session?.user?.id
       if (userId == undefined) {
-        res.status(500)
+        res.status(401)
         throw new Error()
       }
       const userDetails: UserDetails = req.body
