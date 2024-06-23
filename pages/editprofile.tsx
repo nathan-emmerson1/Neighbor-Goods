@@ -6,6 +6,7 @@ function EditProfile() {
   // will need to add useState variables
   // useMutation for the forms to edit profile
   // import/make hooks
+  
   const session = useSession()
   console.log(session.data?.user)
 
