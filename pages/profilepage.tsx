@@ -1,11 +1,6 @@
 'use client'
-import react from 'react'
 // import Image from 'next/image'
 import { useSession } from 'next-auth/react'
-import { userAgent } from 'next/server'
-import { UserDetails } from '@/models/userDetails'
-import {useIsUser} from '../hooks/isUser'
-import useRouter from ''
 
 // const user: UserDetails = {
 //   name: 'Johnny',
@@ -16,8 +11,6 @@ import useRouter from ''
 
 function ProfilePage() {
   const session = useSession()
-  const signIn = useIsUser()
-  if (!signIn) return <Home />
   console.log(session.data?.user)
 
   return (
@@ -35,8 +28,8 @@ function ProfilePage() {
             <div className="w-full flex justify-center">
               <div className="relative">
                 <img
-                  src={session.data?.user?.image}
-                  alt={session.data?.user?.image}
+                  //src={session.data?.user?.image}
+                  //alt={session.data?.user?.image}
                   className=" border-solid border-4 border-secondary shadow-xl rounded-full align-middle absolute -m-16 -ml-17 lg:-ml-14 max-w-[150px] "
                 />
               </div>

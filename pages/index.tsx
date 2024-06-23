@@ -3,7 +3,6 @@ import { signIn, useSession, signOut } from "next-auth/react";
 //import { useIsUser } from "@/hooks/isUser";
 import { useRouter } from "next/router";
 
-
 export default function Home() {
   const {data: session} = useSession()
   const router = useRouter()
