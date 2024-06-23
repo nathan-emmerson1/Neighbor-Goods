@@ -1,20 +1,23 @@
 'use client'
 import react from 'react'
-
+// import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { userAgent } from 'next/server'
 import { UserDetails } from '@/models/userDetails'
+import {useIsUser} from '../hooks/isUser'
+import useRouter from ''
 
-const user: UserDetails = {
-  name: 'Johnny',
-  age: 26,
-  email: 'johnnyy0889@gmail.com',
-  phone: '0223634747',
-}
+// const user: UserDetails = {
+//   name: 'Johnny',
+//   age: 26,
+//   email: 'johnnyy0889@gmail.com',
+//   phone: '0223634747',
+// }
 
 function ProfilePage() {
   const session = useSession()
-
+  const signIn = useIsUser()
+  if (!signIn) return <Home />
   console.log(session.data?.user)
 
   return (
@@ -26,7 +29,6 @@ function ProfilePage() {
       className="hero min-h-screen"
       style={{ backgroundImage: 'url(/images/background-image.png' }}
     >
-    
       <div className=" border-solid border-4 border-secondary mt-34 relative max-w-md mx-auto md:max-w-1xl  min-w-0 break-words bg-white w-full  shadow-lg rounded-xl ">
         <div className="px-6 ">
           <div className="flex flex-wrap justify-center">
@@ -63,7 +65,7 @@ function ProfilePage() {
               </div>
             </div>
           </div>
-           <div className="mt-2 py-2 border-t border-accent text-center"></div>
+          <div className="mt-2 py-2 border-t border-accent text-center"></div>
           <div className="  text-center mt-2">
             <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-4">
               {session.data?.user?.name}
@@ -79,7 +81,10 @@ function ProfilePage() {
                 <p className="font-light leading-relaxed text-slate-600 mb-4">
                   i want to learn how to play guiter
                 </p>
-                <a href="javascript:;" className="btn btn-primary  font-normal">
+                <a
+                  href="http://localhost:3000/editprofile"
+                  className="btn btn-primary  font-normal"
+                >
                   Edit Profile
                 </a>
                 <a
