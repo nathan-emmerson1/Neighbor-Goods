@@ -13,6 +13,14 @@ export default function Job() {
 
   const { data, isPending, isError } = useJobById(id)
 
+  if(isError) {
+    return <p>is error</p>
+  }
+
+  if(isPending) {
+    return <p>loading...</p>
+  }
+
   return (
     <>
     <div className="min-h-screen flex flex-col">
@@ -63,7 +71,6 @@ export default function Job() {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   )
