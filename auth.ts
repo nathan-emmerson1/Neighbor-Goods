@@ -12,6 +12,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     GoogleProvider
   ],
   pages: {
-    signIn: '/signup',
+    //signIn: '/signup',
   }
 });
