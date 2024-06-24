@@ -1,4 +1,22 @@
+import { signIn, useSession, signOut } from 'next-auth/react'
+import { useRouter } from 'next/router'
+
 export default function Navbar() {
+  const { data: session } = useSession()
+  const router = useRouter()
+
+  const handleStart = () => {
+    router.push('/signup')
+  }
+
+  const handleAuth = () => {
+    if (session?.user) {
+      signOut()
+    } else {
+      signIn()
+    }
+  }
+
   return (
     <div className="navbar bg-[#01579b]">
       <div className="navbar-start">
@@ -37,7 +55,7 @@ export default function Navbar() {
       </div>
       <div className="navbar-center">
         <a className="btn btn-ghost text-xl">
-          <img className="h-10" src="images/logo.png" />
+          <img className="h-10" src="/images/logo.png" />
         </a>
       </div>
       <div className="navbar-end">
@@ -95,6 +113,9 @@ export default function Navbar() {
           className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
+            <a onClick={handleAuth}>Log In</a>
+          </li>
+          <li>
             <a className="justify-between">
               Profile
               <span className="badge">New</span>
@@ -104,7 +125,7 @@ export default function Navbar() {
             <a>Settings</a>
           </li>
           <li>
-            <a>Logout</a>
+            <a onClick={handleAuth}>Logout</a>
           </li>
         </ul>
       </div>
