@@ -1,5 +1,6 @@
 import { signIn, useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 export default function Navbar() {
   const { data: session } = useSession()
@@ -54,9 +55,11 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">
-          <img className="h-10" src="/images/logo.png" />
-        </a>
+        <Link href="/" legacyBehavior>
+          <a className="btn btn-ghost text-xl">
+            <img className="h-10" src="/images/logo.png" />
+          </a>
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
