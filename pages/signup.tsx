@@ -8,6 +8,7 @@ export default function SignUp() {
 
   const signInWithGoogle = () => {
     // Google sign up logic here
+    //router.push('/api/auth/signin')
     signIn('google')
   };
 
