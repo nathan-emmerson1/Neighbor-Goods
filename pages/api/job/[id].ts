@@ -1,5 +1,5 @@
 import { NextApiRequest as Req, NextApiResponse as Res } from "next";
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client/edge'
 import { Job } from '@/models/job'
 
 const prisma = new PrismaClient()
