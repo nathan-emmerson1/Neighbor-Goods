@@ -2,6 +2,7 @@
 'use client'
 import { useAuctions } from '@/hooks/fetchAuctions'
 import { JobData } from '@/models/job'
+import AuctionBid from './auctionBid'
 
 interface Props {
   pageNum: number
@@ -40,8 +41,8 @@ export default function AuctionList(props: Props) {
       >
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            Auctions from <span className="text-neutral">NZs #1</span>{' '}
-            Community platform.
+            Auctions from <span className="text-neutral">NZs #1</span> Community
+            platform.
           </h1>
         </div>
       </div>
@@ -56,9 +57,6 @@ export default function AuctionList(props: Props) {
             <img src="https://5.imimg.com/data5/WS/LU/MY-39504911/mens-woolen-sweater.jpg" />
           </figure>
           <div className="card-body items-center text-center">
-            <h2 className="card-title">{test.name}</h2>
-            <p>{test.description}</p>
-            <h3 className="card-title">Compensation: {test.compensation}</h3>
             <ul>
               <li>
                 <strong>Restricted Auction:</strong>{' '}
@@ -67,6 +65,7 @@ export default function AuctionList(props: Props) {
               <li>
                 <strong>Address:</strong> {test.address}
               </li>
+              signup
               <li>
                 <strong>Start Date:</strong>{' '}
                 {test?.start_date
@@ -82,6 +81,33 @@ export default function AuctionList(props: Props) {
             </ul>
             <div className="card-actions">
               <button className="btn btn-primary">Place Bid</button>
+              <button
+                className="btn"
+                onClick={() => {
+                  const modal = document.getElementById(
+                    'my_modal_1'
+                  ) as HTMLDialogElement
+                  if (modal) {
+                    modal.showModal()
+                  }
+                }}
+              >
+                Place Bid
+              </button>
+              <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                  <h3 className="font-bold text-lg">Hello!</h3>
+                  <p className="py-4">
+                    Press ESC key or click the button below to close
+                  </p>
+                  <div className="modal-action">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
             </div>
           </div>
         </div>
