@@ -8,7 +8,8 @@ export default function SignUp() {
 
   const signInWithGoogle = () => {
     // Google sign up logic here
-    signIn('google')
+    router.push('/api/auth/signin')
+    //signIn('google')
   };
 
   const signUpWithEmail = () => {
