@@ -30,7 +30,7 @@ export default function Job() {
       >
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            Auctions from <span className="text-neutral">NZ's #1</span>{' '}
+            Auctions from <span className="text-neutral">NZs #1</span>{' '}
             Community platform.
           </h1>
         </div>
