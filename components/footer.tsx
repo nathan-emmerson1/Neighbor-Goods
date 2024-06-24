@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer items-center p-4 bg-secondary text-neutral-content">
       <aside className="items-center grid-flow-col">
         <img className="h-10" src="/images/icon.png" />
-        <p>Neigbourgoods (GC Inc.) © 2024 - All right reserved</p>
+        <p>Neigbourgoods © 2024</p>
       </aside>
       <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
         <a>
