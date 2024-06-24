@@ -1,8 +1,8 @@
 import { DateTime } from 'next-auth/providers/kakao'
 
 export interface UserDetails {
-  user_id?: String
-  age: number
+  user_id?: string
+  age: string
   phone: string
   location: string
 }

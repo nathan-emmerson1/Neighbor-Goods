@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAddUser } from "@/hooks/createUser";
+import { UserDetails } from "@/models/userDetails"
+import { UserDetailsData } from "@/models/userDetails";
 
 const skillsList = [
   "Gardening",
@@ -27,8 +29,9 @@ const skillsList = [
 export default function Onboarding() {
   const router = useRouter()
   
-  const [userDetails, setUserDetails] = useState({
-    age: 0,
+  //const [dateOfBirth, setDateOfBirth] = useState(0)
+  const [userDetails, setUserDetails] = useState<UserDetails>({
+    age: "",
     phone: "",
     location: "",
   });
@@ -42,7 +45,7 @@ export default function Onboarding() {
         : [...prev, skill]
     );
   };
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
   const {mutate: postDetails} = useAddUser()
@@ -141,11 +144,11 @@ export default function Onboarding() {
         </svg>
 
         <input
-          type="text"
+          type="date"
           className="grow"
           placeholder="e.g. 1969"
           value={age}
-          onChange={(e) => setAge(2024 - Number(e.target.value))}
+          onChange={(e) => setAge(e.target.value)}
           required
         />
       </label>
