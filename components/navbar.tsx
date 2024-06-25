@@ -43,13 +43,10 @@ export default function Navbar() {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Homepage</a>
+              <Link href={'/'}>Homepage</Link>
             </li>
             <li>
-              <a>Portfolio</a>
-            </li>
-            <li>
-              <a>About</a>
+              <Link href={'/'}>About</Link>
             </li>
           </ul>
         </div>
@@ -107,7 +104,7 @@ export default function Navbar() {
           <div className="w-10 rounded-full">
             <img
               alt="Tailwind CSS Navbar component"
-              src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfAnnt0va7XLEaYxX5mgGvLtFozVQX6gXr4Q&s"
+              src={`${session?.user.image}`}
             />
           </div>
         </div>
@@ -116,13 +113,13 @@ export default function Navbar() {
           className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
-            <a onClick={handleAuth}>Log In</a>
+            <Link href={'/signup'}>Log In</Link>
           </li>
           <li>
-            <a className="justify-between">
+            <Link href={'/profilepage'} className="justify-between">
               Profile
               <span className="badge">New</span>
-            </a>
+            </Link>
           </li>
           <li>
             <a>Settings</a>

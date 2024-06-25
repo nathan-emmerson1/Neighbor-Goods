@@ -25,11 +25,9 @@ export default function Home() {
         
         <div className="hero min-h-screen" style={{backgroundImage: 'url(/images/background-image.png'}}>
        
-        <div className="absolute top-0 right-0 m-4 flex space-x-4">{session?.user?.name}<button className='btn glass' onClick={handleAuth}>{session?.user ? 'Logout' : 'Login'}</button>
-        </div>
 
             <div className="hero-overlay bg-black bg-opacity-0"></div>
-            <div className="hero-content text-center text-white text-neutral-content">
+            <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                   <div className="rounded-lg shadow-xl backdrop-blur-sm border border-white/30">
                     <h1 className="mb-5 text-5xl font-bold">NeighbourGood</h1>
