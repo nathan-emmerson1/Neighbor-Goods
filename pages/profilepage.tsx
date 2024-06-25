@@ -1,23 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
-// import Image from 'next/image'
 import { useSession } from 'next-auth/react'
-
-// const user: UserDetails = {
-//   name: 'Johnny',
-//   age: 26,
-//   email: 'johnnyy0889@gmail.com',
-//   phone: '0223634747',
-// }
 
 function ProfilePage() {
   const session = useSession()
+  const userImage = String(session.data?.user.image)
+
   console.log(session.data?.user)
 
   return (
-    
-
-
-
     <div
       className="hero min-h-screen"
       style={{ backgroundImage: 'url(/images/background-image.png' }}
@@ -28,9 +19,9 @@ function ProfilePage() {
             <div className="w-full flex justify-center">
               <div className="relative">
                 <img
-                  //src={session.data?.user?.image}
-                  //alt={session.data?.user?.image}
-                  className=" border-solid border-4 border-secondary shadow-xl rounded-full align-middle absolute -m-16 -ml-17 lg:-ml-14 max-w-[150px] "
+                  src={userImage}
+                  alt={userImage}
+                  className=" border-solid border-4 border-secondary shadow-xl rounded-full align-middle absolute -m-16 -ml-17 lg:-ml-14 max-w-[150px]"
                 />
               </div>
             </div>
@@ -92,16 +83,6 @@ function ProfilePage() {
         </div>
       </div>
     </div>
-    
   )
 }
 export default ProfilePage
-{
-  /* <div>{user.name}</div>
-      <div>{user.age}</div>
-      <div>{user.email}</div>
-      <div>{user.phone}</div>
-      <div>this a test</div> */
-}
-
-// relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16
