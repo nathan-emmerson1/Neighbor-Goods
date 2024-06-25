@@ -1,6 +1,7 @@
 'use client'
 import { useJobById } from '@/hooks/fetchJobs'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 export default function Job() {
   const router = useRouter()
@@ -13,28 +14,28 @@ export default function Job() {
 
   const { data, isPending, isError } = useJobById(id)
 
-  if(isError) {
+  if (isError) {
     return <p>is error</p>
   }
 
-  if(isPending) {
+  if (isPending) {
     return <p>loading...</p>
   }
 
   return (
     <>
-    <div className="min-h-screen flex flex-col">
-    <div
-        className="hero flex items-center justify-center py-16 mt-3"
-        style={{ backgroundImage: 'url(/images/hood.jpg)' }} 
-      >
-        <div className="text-center">
-          <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            Auctions from <span className="text-neutral">NZs #1</span>{' '}
-            Community platform.
-          </h1>
+      <div className="min-h-screen flex flex-col">
+        <div
+          className="hero flex items-center justify-center py-16 mt-3"
+          style={{ backgroundImage: 'url(/images/hood.jpg)' }}
+        >
+          <div className="text-center">
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+              Auctions from <span className="text-neutral">NZs #1</span>{' '}
+              Community platform.
+            </h1>
+          </div>
         </div>
-      </div>
         <div className="flex items-center justify-center min-h-screen">
           <div className="hero bg-[rgba(80,163,204,0.75)] rounded-lg shadow-xl backdrop-blur-[4.3px] border border-[rgba(80,163,204,0.54)] p-6 w-full max-w-2xl">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -66,7 +67,9 @@ export default function Job() {
                       : 'N/A'}
                   </li>
                 </ul>
-                <button className="btn btn-primary my-5">Bid Now</button>
+                <Link href={`/auction/${id}`} className="btn btn-primary my-5">
+                  Bid Now
+                </Link>
               </div>
             </div>
           </div>
