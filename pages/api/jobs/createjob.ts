@@ -14,11 +14,11 @@ export default async function handler(
       const userId = session?.user?.id
       const detailsId = Number(getUserId())
       if (detailsId == undefined) {
-        res.status(500)
+        res.status(401).("user signup incomplete")
         throw new Error()
       }
       if (userId == undefined) {
-        res.status(500)
+        res.status(401).json("user not authenticated")
         throw new Error()
       }
       const newJob: Job = req.body

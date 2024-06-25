@@ -14,7 +14,7 @@ export default async function handler(req: Req, res: Res) {
         }
       })
       if (jobData === null) {
-        res.status(401).json('couldnt find user')
+        res.status(503).json('couldnt find job')
         throw new Error
       }
       const job: Job = jobData
