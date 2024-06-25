@@ -29,7 +29,7 @@ export default function Home() {
         </div>
 
             <div className="hero-overlay bg-black bg-opacity-0"></div>
-            <div className="hero-content text-center text-neutral-content">
+            <div className="hero-content text-center text-white text-neutral-content">
                 <div className="max-w-md">
                   <div className="rounded-lg shadow-xl backdrop-blur-sm border border-white/30">
                     <h1 className="mb-5 text-5xl font-bold">NeighbourGood</h1>

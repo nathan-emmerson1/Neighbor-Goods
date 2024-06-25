@@ -2,6 +2,7 @@
 'use client'
 import { useAuctions } from '@/hooks/fetchAuctions'
 import { JobData } from '@/models/job'
+import Link from 'next/link'
 
 interface Props {
   pageNum: number
@@ -40,8 +41,8 @@ export default function AuctionList(props: Props) {
       >
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            Auctions from <span className="text-neutral">NZs #1</span>{' '}
-            Community platform.
+            Auctions from <span className="text-neutral">NZs #1</span> Community
+            platform.
           </h1>
         </div>
       </div>
@@ -56,9 +57,6 @@ export default function AuctionList(props: Props) {
             <img src="https://5.imimg.com/data5/WS/LU/MY-39504911/mens-woolen-sweater.jpg" />
           </figure>
           <div className="card-body items-center text-center">
-            <h2 className="card-title">{test.name}</h2>
-            <p>{test.description}</p>
-            <h3 className="card-title">Compensation: {test.compensation}</h3>
             <ul>
               <li>
                 <strong>Restricted Auction:</strong>{' '}
@@ -67,21 +65,24 @@ export default function AuctionList(props: Props) {
               <li>
                 <strong>Address:</strong> {test.address}
               </li>
+              signup
               <li>
                 <strong>Start Date:</strong>{' '}
                 {test?.start_date
-                  ? new Date(test.start_date).toLocaleDateString()
+                  ? new Date(test.start_date).toLocaleDateString('en-NZ')
                   : 'N/A'}
               </li>
               <li>
                 <strong>End Date:</strong>
                 {test?.start_date
-                  ? new Date(test.start_date).toLocaleDateString()
+                  ? new Date(test.start_date).toLocaleDateString('en-NZ')
                   : 'N/A'}
               </li>
             </ul>
             <div className="card-actions">
-              <button className="btn btn-primary">Place Bid</button>
+              <Link href={`/auction/${1}`} className="btn btn-primary my-5">
+                Bid Now
+              </Link>
             </div>
           </div>
         </div>
