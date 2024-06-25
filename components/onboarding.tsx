@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useAddUser } from "@/hooks/createUser";
 import { UserDetails } from "@/models/userDetails"
-import { UserDetailsData } from "@/models/userDetails";
 
 const skillsList = [
   "Gardening",
