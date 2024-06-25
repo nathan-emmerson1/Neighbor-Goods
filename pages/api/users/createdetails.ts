@@ -14,14 +14,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         throw new Error()
       }
       const userDetails: UserDetails = req.body
-      prisma.userDetails.create({
-        data: {
-          user_id: userId,
-          age: userDetails.age,
-          phone: userDetails.phone,
-          location: userDetails.location,
-        },
-      })
+      //prisma.userDetails.create({
+      //  data: {
+      //    user_id: userId,
+      //    age: userDetails.age,
+      //    phone: userDetails.phone,
+      //    location: userDetails.location,
+      //  },
+      //})
       res.json(userDetails)
     } catch (error) {
       console.error(error)
