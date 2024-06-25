@@ -2,7 +2,7 @@ import { Bid } from '@/models/bid'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { auth } from '@/auth'
 import { PrismaClient } from '@prisma/client/extension'
-const prisma = new prismaClient()
+const prisma = new PrismaClient()
 
 export default async function handler(
   req: NextApiRequest,
@@ -36,9 +36,9 @@ export default async function handler(
           compensation: newBid.compensation,
           user_id: user_id,
           user: userDetails,
-          job_id: newJob.job_id,
+          job_id: newBid.job_id,
           job: job,
-          date_posted: newJob.date_posted,
+          date_posted: newBid.date_posted,
         },
       })
       res.json(newBid)
