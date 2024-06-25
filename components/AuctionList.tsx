@@ -2,7 +2,7 @@
 'use client'
 import { useAuctions } from '@/hooks/fetchAuctions'
 import { JobData } from '@/models/job'
-import AuctionBid from './auctionBid'
+import Link from 'next/link'
 
 interface Props {
   pageNum: number
@@ -69,45 +69,20 @@ export default function AuctionList(props: Props) {
               <li>
                 <strong>Start Date:</strong>{' '}
                 {test?.start_date
-                  ? new Date(test.start_date).toLocaleDateString()
+                  ? new Date(test.start_date).toLocaleDateString('en-NZ')
                   : 'N/A'}
               </li>
               <li>
                 <strong>End Date:</strong>
                 {test?.start_date
-                  ? new Date(test.start_date).toLocaleDateString()
+                  ? new Date(test.start_date).toLocaleDateString('en-NZ')
                   : 'N/A'}
               </li>
             </ul>
             <div className="card-actions">
-              <button className="btn btn-primary">Place Bid</button>
-              <button
-                className="btn"
-                onClick={() => {
-                  const modal = document.getElementById(
-                    'my_modal_1'
-                  ) as HTMLDialogElement
-                  if (modal) {
-                    modal.showModal()
-                  }
-                }}
-              >
-                Place Bid
-              </button>
-              <dialog id="my_modal_1" className="modal">
-                <div className="modal-box">
-                  <h3 className="font-bold text-lg">Hello!</h3>
-                  <p className="py-4">
-                    Press ESC key or click the button below to close
-                  </p>
-                  <div className="modal-action">
-                    <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="btn">Close</button>
-                    </form>
-                  </div>
-                </div>
-              </dialog>
+              <Link href={`/auction/${1}`} className="btn btn-primary my-5">
+                Bid Now
+              </Link>
             </div>
           </div>
         </div>
