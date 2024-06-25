@@ -28,34 +28,34 @@ export default function Onboarding() {
   const router = useRouter()
   
   //const [dateOfBirth, setDateOfBirth] = useState(0)
-  const [userDetails, setUserDetails] = useState<UserDetails>({
-    age: "",
-    phone: "",
-    location: "",
-  });
+  //const [userDetails, setUserDetails] = useState<UserDetails>({
+  //  age: "",
+  //  phone: "",
+  //  location: "",
+  //});
 
-  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-
-  const toggleSkill = (skill: string) => {
-    setSelectedSkills((prev) =>
-      prev.includes(skill)
-        ? prev.filter((item) => item !== skill)
-        : [...prev, skill]
-    );
-  };
-  const [age, setAge] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-  const handleSubmit = async () => {
-    setUserDetails({
-      age,
-      phone,
-      location,
-    })
-    router.push('/profilepage')
-  };
-
-  const [selectedImage, setSelectedImage] = useState("");
+  //const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  //
+  //const toggleSkill = (skill: string) => {
+  //  setSelectedSkills((prev) =>
+  //    prev.includes(skill)
+  //      ? prev.filter((item) => item !== skill)
+  //      : [...prev, skill]
+  //  );
+  //};
+  //const [age, setAge] = useState("");
+  //const [phone, setPhone] = useState("");
+  //const [location, setLocation] = useState("");
+  //const handleSubmit = async () => {
+  //  setUserDetails({
+  //    age,
+  //    phone,
+  //    location,
+  //  })
+  //  router.push('/profilepage')
+  //};
+  //
+  //const [selectedImage, setSelectedImage] = useState("");
 
   const handleImageUpload = (e: any) => {
     const file = e.target.files[0];
