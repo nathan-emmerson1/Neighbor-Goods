@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import react, { useState } from 'react'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 
 function EditProfile() {
   // will need to add useState variables
@@ -10,7 +12,10 @@ function EditProfile() {
   // import/make hooks
   
   const session = useSession()
-  console.log(session.data?.user)
+  console.log(session.data?.user.image)
+  const userImage = String(session.data?.user.image)
+ 
+  console.log(userImage)
 
   return (
     <div className="hero min-h-screen"
@@ -53,10 +58,12 @@ function EditProfile() {
               </h2>
               <div className=" grid max-w-2xl mx-auto mt-8">
                 <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
+                 
                   <img
                     className="border-solid border-4 border-secondary object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                    //src={session.data?.user.image}
-                    alt="Bordered avatar"
+                    src={userImage}
+                    alt={userImage}
+                    
                   />
                   <div className="flex flex-col space-y-5 sm:ml-8">
                     <button
