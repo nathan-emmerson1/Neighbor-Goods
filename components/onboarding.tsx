@@ -46,14 +46,12 @@ export default function Onboarding() {
   const [age, setAge] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
-  const {mutate: postDetails} = useAddUser()
   const handleSubmit = async () => {
     setUserDetails({
       age,
       phone,
       location,
     })
-    postDetails(userDetails)
     router.push('/profilepage')
   };
 
