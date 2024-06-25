@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import { useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 function ProfilePage() {
   const session = useSession()
@@ -65,18 +66,18 @@ function ProfilePage() {
                 <p className="font-light leading-relaxed text-slate-600 mb-4">
                   i want to learn how to play guiter
                 </p>
-                <a
-                  href="http://localhost:3000/editprofile"
+                <Link
+                  href="/editprofile"
                   className="btn btn-primary  font-normal"
                 >
                   Edit Profile
-                </a>
-                <a
+                </Link>
+                <Link
                   href="https://mail.google.com/mail/u/0/#inbox"
                   className=" bg-primary ml-4 font-normal btn btn-primary"
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
           </div>
