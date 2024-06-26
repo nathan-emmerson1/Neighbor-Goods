@@ -8,7 +8,7 @@ export default function About() {
       className="hero min-h-screen"
       style={{ backgroundImage: 'url(/images/background-image.png' }}
     >
-      <div className="hero-overlay bg-opacity-50"></div>
+      <div className="bg-opacity-50"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="card glass w-full ">
           <div className="card-body">
